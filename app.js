@@ -32,6 +32,7 @@ app.get('/beers/beer-:id', (req, res) => {
   let id = req.params.id;
   let beers = punkAPI.getBeers();
   beers.then(function (beerData) {
+    beerData[id].displayDetails = true;
     res.render('randomBeer', {beer:beerData[id]})
   })
   beers.catch(error => console.log(error));
@@ -45,6 +46,7 @@ app.get('/random-beer', (req, res) => {
       beer: beersData[i],
       title: 'Random Beer'
     }
+    beersData[i].displayDetails = true;
     res.render('randomBeer', data);
   });
   beers.catch(error => console.log(error));

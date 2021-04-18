@@ -2,7 +2,14 @@
     <a href='/beers/beer-{{this.id}}'>
         <img src='{{ this.image_url }}' onerror='this.src="/images/beer_error.webp"' />
     </a>
-    <h5>{{ this.name }}</h5>
-    <p id='tag'> {{ this.tagline }} </p>
-    <p id='description'>{{ this.description }}</p>
+    <div>
+        <h2>{{ this.name }}</h2>
+        <p id='tag'> {{ this.tagline }} </p>
+        <p id='description'>{{ this.description }}</p>
+
+        {{#if this.displayDetails}}
+            <p id='food-pairing'>{{ this.food_pairing }}</p>
+            <p id='brewers-tips'>{{  this.brewers_tips }}</p>
+        {{/if}}
+    </div>
 </div>
