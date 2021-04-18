@@ -32,7 +32,7 @@ app.get('/random-beer', (req, res) => {
   let beers = punkAPI.getBeers();
   beers.then(function (beersData) {
     let i = Math.floor(Math.random()*beersData.length)
-
+    console.log(beersData[i])
     res.render('randomBeer', {beer: beersData[i]});
   });
   beers.catch(error => console.log(error));

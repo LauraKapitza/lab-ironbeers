@@ -1,9 +1,8 @@
 <div>
     <h1>Random Beer</h1>
     <div>
-        <img src='{{ beer.image_url }}' onerror='this.src="/images/giphy-beer.gif"' />
-        <h5>{{beer.name }}</h5>
-        <p>{{ beer.description }}</p>
-        <p>Tag: <span>{{ beer.tagline }}</span></p>
+        {{> beer beer}}
+        <p id='food-pairing'>{{beer.food_pairing }}</p>
+        <p id='brewers-tips'>{{ beer.brewers_tips }}</p>
     </div>
 </div>
