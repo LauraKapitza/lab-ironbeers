@@ -28,12 +28,24 @@ app.get('/beers', (req, res) => {
   beers.catch(error => console.log(error));
 });
 
+app.get('/beers/beer-:id', (req, res) => {
+  let id = req.params.id;
+  let beers = punkAPI.getBeers();
+  beers.then(function (beerData) {
+    res.render('randomBeer', {beer:beerData[id]})
+  })
+  beers.catch(error => console.log(error));
+})
+
 app.get('/random-beer', (req, res) => {
   let beers = punkAPI.getBeers();
   beers.then(function (beersData) {
     let i = Math.floor(Math.random()*beersData.length)
-    console.log(beersData[i])
-    res.render('randomBeer', {beer: beersData[i]});
+    let data = {
+      beer: beersData[i],
+      title: 'Random Beer'
+    }
+    res.render('randomBeer', data);
   });
   beers.catch(error => console.log(error));
 })
